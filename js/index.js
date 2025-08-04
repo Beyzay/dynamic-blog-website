@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log("Posts in localStorage:", posts);
 
-    if (posts.length === 0) {
+    if (!posts.length) {
         postList.innerHTML = `<div class="col-12 text-center"><p>No posts yet.</p></div>`;
     } else {
         
