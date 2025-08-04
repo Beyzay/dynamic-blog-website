@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Post</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <script src="js/bootstrap.bundle.min.js" defer></script>
+    <script src="js/new-post.js" defer></script>
+</head>
+<body>
+    <main>
+        <div class="container my-5">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h1>Add New Post</h1>
+                </div>
+            </div>
+
+            <!-- Add New Post Form -->
+            <div class="row my-4">
+                <div class="col-12">
+                    <form id="post-form" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <input type="text" name="post-title" class="form-control" id="post-title" placeholder="Post Title" aria-label="Post Title">
+                        </div>
+
+                        <div class="mb-3">
+                            <textarea name="post-content" class="form-control" id="post-content" rows="6" placeholder="Post Content" aria-label="Post Content"></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <input type="file" name="post-image" class="form-control" id="post-image" accept="image/*" aria-label="Post Image">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100" id="post-add-btn">Add Post</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>
