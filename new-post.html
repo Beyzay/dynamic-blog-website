@@ -23,10 +23,12 @@
                 <div class="col-12">
                     <form id="post-form" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
+                            <div class="alert alert-danger d-none small py-0 mb-1" id="post-title-err-msg" role="alert">Please enter a post title.</div>
                             <input type="text" name="post-title" class="form-control" id="post-title" placeholder="Post Title" aria-label="Post Title">
                         </div>
 
                         <div class="mb-3">
+                            <div class="alert alert-danger d-none small py-0 mb-1" id="post-content-err-msg" role="alert">Please enter post content.</div>
                             <textarea name="post-content" class="form-control" id="post-content" rows="6" placeholder="Post Content" aria-label="Post Content"></textarea>
                         </div>
                         
