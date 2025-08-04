@@ -1,0 +1,10 @@
+# dynamic-blog-website
+
+# This is a dynamic, responsive, multi-page blog website with CRUD functionality for blog posts.
+
+# CRUD Operations: Implement the ability to create, read, update, and delete blog posts.
+    # (Read) index.html (Homepage): Displays a list of blog posts
+    # (Create) new-post.html (Create Post): Creates new posts
+    # (Update/Delete) post.html (View/Edit Post): Edits or Deletes existing posts
+
+# JavaScript Local Storage: Store and retrieve blog post data from the browser's local storage.
