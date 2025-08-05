@@ -20,7 +20,7 @@
 
             <!-- Add New Post Form -->
             <div class="row my-4">
-                <div class="col-12">
+                <div class="col-12 col-md-8 mx-auto">
                     <form id="post-form" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <div class="alert alert-danger d-none small py-0 mb-1" id="post-title-err-msg" role="alert">Please enter a post title.</div>
@@ -33,7 +33,7 @@
                         </div>
                         
                         <div class="mb-3">
-                            <input type="file" name="post-image" class="form-control" id="post-image" accept="image/*" aria-label="Post Image">
+                            <input type="file" name="post-image" class="form-control img-fluid" id="post-image" accept="image/*" alt="Responsive post image" aria-label="Post Image">
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100" id="post-add-btn">Add Post</button>
