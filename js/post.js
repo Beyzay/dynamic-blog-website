@@ -38,8 +38,11 @@ if (isNaN(postId) || !posts[postId]) {
                     <p class="card-text" id="post-content">${post.content ? post.content : "(Content required)"}</p>
                     ${formattedDate ? `<p class="card-text"><small class="text-body-secondary">Posted on ${formattedDate}</small></p>` : ""}
                 </div>
+
+                <!-- Edit and Delete Buttons -->
                 <div class="card-footer text-body-secondary d-flex gap-2">
                     <button class="btn btn-secondary flex-fill" id="post-edit-btn">Edit</button>
+                    <button class="btn btn-danger flex-fill" id="post-delete-btn">Delete</button>
                 </div>
             </div>
         </div>
@@ -83,5 +86,15 @@ document.getElementById("post-edit-btn").addEventListener("click", () => {
         
         window.location.href = "index.html";
     }, {once:true});
+});
+
+// Delete functionality
+document.getElementById("post-delete-btn").addEventListener("click", () => {
+    const confirmed = confirm("Confirm to delete this post?");
+    if (confirmed) {
+        posts.splice(postId, 1);
+        localStorage.setItem("posts", JSON.stringify(posts));
+        window.location.href = "index.html";
+    }
 });
 
