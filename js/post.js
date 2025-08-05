@@ -49,43 +49,53 @@ if (isNaN(postId) || !posts[postId]) {
     `;
 }
 
+let isEditing = false;
 // Edit functionality
-document.getElementById("post-edit-btn").addEventListener("click", () => {
-    const title = document.getElementById("post-title");
-    const content = document.getElementById("post-content");
-
-    title.outerHTML = `<input class="form-control mb-3" id="edit-title" value="${posts[postId].title}">`;
-    content.outerHTML = `<textArea class="form-control mb-3" id="edit-content" rows="6">${posts[postId].content}</textarea>`;
-
+document.getElementById("post-edit-btn").addEventListener("click", (e) => {
     const editBtn = document.getElementById("post-edit-btn");
-    editBtn.textContent = "Save";
-    editBtn.classList.remove("btn-Secondary");
-    editBtn.classList.add("btn-success");
+    if (!editBtn || e.target !== editBtn) return;
 
-    editBtn.addEventListener("click", () => {
+    // Enter edit mode with 1st click
+    if (!isEditing) {
+        const title = document.getElementById("post-title");
+        const content = document.getElementById("post-content");
+
+        title.outerHTML = `<input class="form-control mb-3" id="edit-title" value="${posts[postId].title}">`;
+        content.outerHTML = `<textArea class="form-control mb-3" id="edit-content" rows="6">${posts[postId].content}</textarea>`;
+
+        // Change button appearance
+        editBtn.textContent = "Save";
+        editBtn.classList.remove("btn-Secondary");
+        editBtn.classList.add("btn-success");
+
+        isEditing = true;
+    } else {
+        // Try to save with 2nd click
         const newTitle = document.getElementById("edit-title").value.trim();
         const newContent = document.getElementById("edit-content").value.trim();
-        const postTitleErrMsg = document.getElementById("post-Title-Err-Msg");
+        
+        const postTitleErrMsg = document.getElementById("post-title-err-msg");
         const postContentErrMsg = document.getElementById('post-content-err-msg');
     
        // Clear previous error messages
         postTitleErrMsg?.classList.add("d-none");
         postContentErrMsg?.classList.add("d-none");
 
-        // Validate Inputs
+        // Validate Inputs by showing error message(s) required fields are empty
         if (!newTitle || !newContent) {
             if (!newTitle) postTitleErrMsg?.classList.remove("d-none"); 
             if (!newContent) postContentErrMsg?.classList.remove("d-none");
             return;
-        }
+        }    
 
-        //Save to localStorage
+        // Save to localStorage
         posts[postId].title = newTitle;
         posts[postId].content = newContent;
         localStorage.setItem("posts", JSON.stringify(posts));
         
-        window.location.href = "index.html";
-    }, {once:true});
+        // Refresh
+        window.location.reload();
+    }
 });
 
 // Delete functionality
